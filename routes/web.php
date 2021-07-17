@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::prefix('ticket')->group(function () {
     Route::get('/create', [App\Http\Controllers\TicketController::class, 'create']);
     Route::get('/update', [App\Http\Controllers\TicketController::class, 'update']);
+    Route::get('/delete', [App\Http\Controllers\TicketController::class, 'delete']);
 });
 
 Route::prefix('tests')->group(function () {

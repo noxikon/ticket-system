@@ -35,9 +35,20 @@ class TicketController extends Controller
         $ticket->save();
 
         if(!$ticket){
-            return "Bitte überprüfen Sie nochmal die Eingabe, das Ticket konnte nicht erstellt werden.";
+            return "Bitte überprüfen Sie nochmal die Eingabe, das Ticket konnte nicht geupdatet werden.";
         }else{
-            return "Das Ticket wurde erfolgreich erstellt!";
+            return "Das Ticket wurde erfolgreich geupdatet!";
+        }
+    }
+
+    public function delete(Request $request){
+        $ticket = Tickets::find($request->id);
+        $ticket->delete();
+
+        if(!$ticket){
+            return "Fehler, das Ticket konnte nicht gelöscht werden.";
+        }else{
+            return "Das Ticket wurde erfolgreich gelöscht!";
         }
     }
 }

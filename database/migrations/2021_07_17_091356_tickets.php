@@ -15,7 +15,7 @@ class Tickets extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->integer('userid');
+            $table->integer('user_id')->nullable();
             $table->string('titel');
             $table->text('description');
             $table->unsignedBigInteger('status_id');
@@ -23,7 +23,7 @@ class Tickets extends Migration
             $table->timestamps();
 
             $table->index('id');
-            $table->index('userid');
+            $table->index('user_id');
 
             $table->foreign('status_id')->references('id')->on('status');
         });

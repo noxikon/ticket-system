@@ -12,7 +12,7 @@ class TicketController extends Controller
         
         $ticket = new Tickets;
         $ticket->titel = $request->title;
-        $ticket->userid = $request->userid;
+        $ticket->user_id = $request->user_id;
         $ticket->description = $request->description;
         $ticket->status_id = $request->status_id;
         $ticket->due_date = $request->due_date;
@@ -28,7 +28,7 @@ class TicketController extends Controller
     public function update(Request $request){
         $ticket = Tickets::find($request->id);
         $ticket->titel = $request->title;
-        $ticket->userid = $request->userid;
+        $ticket->user_id = $request->user_id;
         $ticket->description = $request->description;
         $ticket->status_id = $request->status_id;
         $ticket->due_date = $request->due_date;
@@ -61,6 +61,18 @@ class TicketController extends Controller
             return "Fehler, der Status des Tickets konnte nicht geupdatet werden!";
         }else{
             return "Der Status wurde erfolgreich geupdatet!";
+        }
+    }
+
+    public function assignUser(Request $request){
+        $ticket = Tickets::find($request->id);
+        $ticket->user_id = $request->user_id;
+        $ticket->save();
+
+        if(!$ticket){
+            return "Fehler, das Ticket konnte nicht dem User zugewiesen werden!";
+        }else{
+            return "Das Ticket wurde erfolgreich dem User zugewiesen!";
         }
     }
 }

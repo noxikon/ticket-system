@@ -24,6 +24,9 @@ Route::prefix('ticket')->group(function () {
 
     // Status 
     Route::get('/changeStatus', [App\Http\Controllers\TicketController::class, 'changeStatus']);
+
+    // Set Users
+    Route::get('/assignUser', [App\Http\Controllers\TicketController::class, 'assignUser']);
 });
 
 Route::prefix('tests')->group(function () {

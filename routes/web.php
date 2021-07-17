@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('ticket')->group(function () {
+    Route::get('/create', [App\Http\Controllers\Tickets::class, 'create']);
+});
 
 Route::prefix('tests')->group(function () {
     Route::get('/createStatus', [App\Http\Controllers\TestTicketSystem::class, 'createStatus']);

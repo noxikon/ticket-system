@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('tests')->group(function () {
+    Route::get('/createStatus', [App\Http\Controllers\TestTicketSystem::class, 'createStatus']);
+});

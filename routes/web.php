@@ -30,5 +30,5 @@ Route::prefix('ticket')->group(function () {
 });
 
 Route::prefix('tests')->group(function () {
-    Route::get('/createStatus', [App\Http\Controllers\TestTicketSystem::class, 'createStatus']);
+    Route::get('/start', [App\Http\Controllers\TestTicketSystem::class, 'createTestValues']);
 });

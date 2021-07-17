@@ -11,8 +11,15 @@ use App\Models\Tickets;
 class TestTicketSystem extends Controller
 {
     
-    public function createStatus(){
+    public function createTestValues()
+    {
+        $this->createStatus();
+        $this->createTickets();
+    }
 
+
+    private function createStatus()
+    {
         $arr_status = [
             1 => 'todo',
             2 => 'doing',
@@ -25,21 +32,23 @@ class TestTicketSystem extends Controller
             $status->status_name = $status_name;
             $status->save();
         }
-/*
+    }
+
+    private function createTickets()
+    {
         $arr_tickets = [
             [
-                "titel" => "System-Service",
-                "user_id" => 1,
+                "title" => "System-Service",
                 "description" => "Sample Text",
                 "due_date" => "2020-07-29",
                 "status_id" => 1
             ],[
-                "titel" => "Ticket 2",
+                "title" => "Ticket 2",
                 "description" => "Sample Text",
                 "due_date" => "2020-09-30",
                 "status_id" => 1
             ], [
-                "titel" => "Ticket 3",
+                "title" => "Ticket 3",
                 "description" => "Sample Text",
                 "due_date" => "2020-12-23",
                 "status_id" => 1
@@ -53,8 +62,7 @@ class TestTicketSystem extends Controller
                 $ticket->$index = $value;
             }
             $ticket->save();
-        }*/
-
+        }
     }
     
 }

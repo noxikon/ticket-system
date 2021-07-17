@@ -51,4 +51,16 @@ class TicketController extends Controller
             return "Das Ticket wurde erfolgreich gelöscht!";
         }
     }
+
+    public function changeStatus(Request $request){
+        $ticket = Tickets::find($request->id);
+        $ticket->status_id = $request->status_id;
+        $ticket->save();
+
+        if(!$ticket){
+            return "Fehler, der Status des Tickets konnte nicht geupdatet werden!";
+        }else{
+            return "Der Status wurde erfolgreich geupdatet!";
+        }
+    }
 }

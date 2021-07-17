@@ -21,6 +21,9 @@ Route::prefix('ticket')->group(function () {
     Route::get('/create', [App\Http\Controllers\TicketController::class, 'create']);
     Route::get('/update', [App\Http\Controllers\TicketController::class, 'update']);
     Route::get('/delete', [App\Http\Controllers\TicketController::class, 'delete']);
+
+    // Status 
+    Route::get('/changeStatus', [App\Http\Controllers\TicketController::class, 'changeStatus']);
 });
 
 Route::prefix('tests')->group(function () {

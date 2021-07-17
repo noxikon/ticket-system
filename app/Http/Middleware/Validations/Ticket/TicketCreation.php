@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Validations;
+namespace App\Http\Middleware\Validations\Ticket;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
-class TicketUnassignUser
+class TicketCreation
 {
     /**
      * Handle an incoming request.
@@ -22,15 +21,14 @@ class TicketUnassignUser
         $validator = Validator::make(
             $request->all(),
             [
-                'ticket_id' => ['required'],
-                'user_id' => [
-                    'required',
-                    Rule::exists('ticket_j_users', 'user_id')->where('ticket_id', $request->get('ticket_id'))
-                ]
+                'title' => ['required'],
+                'description' => ['nullable'],
+                'due_date' => ['nullable'],
+                'status_id' => ['required', 'exists:status,id']
             ],
             [
                 'required' => 'The :attribute field is required.',
-                'user_id.exists' => 'The user is not assigned to the ticket.'
+                'status_id.exists' => 'The status does not exist.'
             ]
         );
 

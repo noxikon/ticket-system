@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Validations;
+namespace App\Http\Middleware\Validations\Ticket;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
-class TicketChangeStatus
+class TicketDelete
 {
     /**
      * Handle an incoming request.
@@ -22,13 +21,10 @@ class TicketChangeStatus
         $validator = Validator::make(
             $request->all(),
             [
-                'ticket_id' => ['required', 'exists:ticket,id'],
-                'status_id' => ['required', 'exists:status,id']
+                'id' => ['required', 'exists:ticket,id'],
             ],
             [
-                'required' => 'The :attribute field is required.',
-                'status_id.exists' => 'The status does not exist.',
-                'ticket_id.exists' => 'The ticket does not exist.'
+                'id.exists' => 'The ticket does not exist.'
             ]
         );
 

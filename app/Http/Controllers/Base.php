@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Status;
 use App\Models\Tickets;
 
-class TestTicketSystem extends Controller
+class Base extends Controller
 {
-
     public function test()
     {
         return "Hello";

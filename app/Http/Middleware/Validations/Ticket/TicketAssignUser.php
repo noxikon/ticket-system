@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\Validations;
+namespace App\Http\Middleware\Validations\Ticket;
 
 use Closure;
 use Illuminate\Http\Request;

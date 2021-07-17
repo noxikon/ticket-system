@@ -3,13 +3,19 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Validations
-use App\Http\Middleware\Validations\TicketCreation;
-use App\Http\Middleware\Validations\TicketUpdate;
-use App\Http\Middleware\Validations\TicketDelete;
-use App\Http\Middleware\Validations\TicketAssignUser;
-use App\Http\Middleware\Validations\TicketChangeStatus;
-use App\Http\Middleware\Validations\TicketUnassignUser;
+// ---- Validations ----
+// Tickets
+use App\Http\Middleware\Validations\Ticket\TicketCreation;
+use App\Http\Middleware\Validations\Ticket\TicketUpdate;
+use App\Http\Middleware\Validations\Ticket\TicketDelete;
+use App\Http\Middleware\Validations\Ticket\TicketAssignUser;
+use App\Http\Middleware\Validations\Ticket\TicketChangeStatus;
+use App\Http\Middleware\Validations\Ticket\TicketUnassignUser;
+
+// Status
+
+
+// User
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +28,7 @@ use App\Http\Middleware\Validations\TicketUnassignUser;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/users', function (Request $request) {
     return $request->user();
 });
 
@@ -45,7 +51,7 @@ Route::prefix('v1')->group(function () {
         //Route::get('/delete', [App\Http\Controllers\TicketController::class, 'delete']);
     });
 
-    Route::prefix('users')->group(function () {
+    Route::prefix('user')->group(function () {
         //Route::get('/create', [App\Http\Controllers\TicketController::class, 'assignUser']);
         //Route::get('/update', [App\Http\Controllers\TicketController::class, 'assignUser']);
         //Route::get('/delete', [App\Http\Controllers\TicketController::class, 'assignUser']);

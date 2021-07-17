@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Validations;
+namespace App\Http\Middleware\Validations\Ticket;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
-class TicketCreation
+class TicketUpdate
 {
     /**
      * Handle an incoming request.
@@ -21,6 +21,7 @@ class TicketCreation
         $validator = Validator::make(
             $request->all(),
             [
+                'id' => ['required', 'exists:ticket,id'],
                 'title' => ['required'],
                 'description' => ['nullable'],
                 'due_date' => ['nullable'],
@@ -28,7 +29,8 @@ class TicketCreation
             ],
             [
                 'required' => 'The :attribute field is required.',
-                'status_id.exists' => 'The status does not exist.'
+                'status_id.exists' => 'The status does not exist.',
+                'id.exists' => 'The ticket does not exist.'
             ]
         );
 

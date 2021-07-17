@@ -64,5 +64,4 @@ class TestTicketSystem extends Controller
             $ticket->save();
         }
     }
-    
 }

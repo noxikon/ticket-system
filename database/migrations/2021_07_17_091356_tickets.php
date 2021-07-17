@@ -16,9 +16,9 @@ class Tickets extends Migration
         Schema::create('ticket', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('status_id');
-            $table->date('due_date');
+            $table->date('due_date')->nullable();
             $table->timestamps();
 
             $table->index('id');

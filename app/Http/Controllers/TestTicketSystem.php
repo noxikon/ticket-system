@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 // model's
 use App\Models\Status;
+use App\Models\Tickets;
 
 class TestTicketSystem extends Controller
 {
@@ -23,5 +24,35 @@ class TestTicketSystem extends Controller
             $status->status_name = $status_name;
             $status->save();
         }
+
+        $arr_tickets = [
+            [
+                "titel" => "System-Service",
+                "user_id" => 1,
+                "description" => "Sample Text",
+                "due_date" => "2020-07-29",
+                "status_id" => 1
+            ],[
+                "titel" => "Ticket 2",
+                "description" => "Sample Text",
+                "due_date" => "2020-09-30",
+                "status_id" => 1
+            ], [
+                "titel" => "Ticket 3",
+                "description" => "Sample Text",
+                "due_date" => "2020-12-23",
+                "status_id" => 1
+            ]
+        ];
+
+        foreach($arr_tickets as $tickets){
+            $ticket = new Tickets;
+
+            foreach($tickets as $index => $value){
+                $ticket->$index = $value;
+            }
+            $ticket->save();
+        }
+
     }
 }

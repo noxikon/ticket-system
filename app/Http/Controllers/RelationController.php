@@ -9,8 +9,9 @@ class RelationController extends Controller
 {
     public function create(Request $request)
     {
-        $relation = new TicketRelation;
-        $relation->relation_name = $request->relation_name;
+        $relation = new TicketRelation(
+            $request->relation_name
+        );
         $relation->save();
 
         if(!$relation){

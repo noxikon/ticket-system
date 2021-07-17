@@ -10,6 +10,12 @@ class TicketRelation extends Model
     use HasFactory;
 
     public $timestamps = false;
-    
+
     protected $table = 'ticket_relation';
+
+    public function __construct(string $name)
+    {
+        parent::__construct();
+        $this->relation_name = $name;
+    }
 }

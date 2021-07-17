@@ -21,9 +21,9 @@ class TicketController extends Controller
         $ticket->save();
 
         if(!$ticket){
-            return "Bitte überprüfen Sie nochmal die Eingabe, das Ticket konnte nicht erstellt werden.";
+            return "Error, the ticket can't created.";
         }else{
-            return "Das Ticket wurde erfolgreich erstellt!";
+            return "The ticket has been created!";
         }
     }
 
@@ -37,9 +37,9 @@ class TicketController extends Controller
         $ticket->save();
 
         if(!$ticket){
-            return "Bitte überprüfen Sie nochmal die Eingabe, das Ticket konnte nicht geupdatet werden.";
+            return "Error, can't update the ticket.";
         }else{
-            return "Das Ticket wurde erfolgreich geupdatet!";
+            return "The ticket has been updatet!";
         }
     }
 
@@ -49,47 +49,49 @@ class TicketController extends Controller
         $ticket->delete();
 
         if(!$ticket){
-            return "Fehler, das Ticket konnte nicht gelöscht werden.";
+            return "Error, the ticket can't get deletet.";
         }else{
-            return "Das Ticket wurde erfolgreich gelöscht!";
+            return "The ticket is deletet.";
         }
     }
 
     public function changeStatus(Request $request)
     {
-        $ticket = Tickets::find($request->id);
+        $ticket = Tickets::find($request->ticket_id);
         $ticket->status_id = $request->status_id;
         $ticket->save();
 
         if(!$ticket){
-            return "Fehler, der Status des Tickets konnte nicht geupdatet werden!";
+            return "Error, can't change the status.";
         }else{
-            return "Der Status wurde erfolgreich geupdatet!";
+            return "The status of the ticket has been changed!";
         }
     }
 
     public function assignUser(Request $request)
     {
-        /*
+        $ticketJuser = new TicketJUser;
+        $ticketJuser->ticket_id = $request->ticket_id;
+        $ticketJuser->user_id = $request->user_id;
+        $ticketJuser->save();
 
-        $ticket = TicketJUser::find($request->id);
-
-        return "Test";
-        //$ticket->user_id = $request->user_id;
-        //$ticket->save();
-
-        /*
-
-        if(!$ticket){
-            return "Fehler, das Ticket konnte nicht dem User zugewiesen werden!";
+        if(!$ticketJuser){
+            return "Error, the user can't get assign to the ticket.";
         }else{
-            return "Das Ticket wurde erfolgreich dem User zugewiesen!";
+            return "The ticket is assign to the user.";
         }
-        */
     }
 
-    public function unAssignUser(Request $request)
+    public function unassignUser(Request $request)
     {
-        //
+        $ticketJuser = TicketJUser::where('ticket_id', $request->get('ticket_id'))
+                                    ->where('user_id', $request->get('user_id'))
+                                    ->delete();
+
+        if(!$ticketJuser){
+            return "Error, the user is still assign to the ticket.";
+        }else{
+            return "The user is not longer assign to the ticket.";
+        }
     }
 }

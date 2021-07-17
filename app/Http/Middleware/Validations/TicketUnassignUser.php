@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class TicketAssignUser
+class TicketUnassignUser
 {
     /**
      * Handle an incoming request.
@@ -22,18 +22,15 @@ class TicketAssignUser
         $validator = Validator::make(
             $request->all(),
             [
-                'ticket_id' => ['required', 'exists:ticket,id'],
+                'ticket_id' => ['required'],
                 'user_id' => [
                     'required',
-                    'exists:users,id',
-                    Rule::unique('ticket_j_users', 'user_id')->where('ticket_id', $request->get('ticket_id'))
+                    Rule::exists('ticket_j_users', 'user_id')->where('ticket_id', $request->get('ticket_id'))
                 ]
             ],
             [
                 'required' => 'The :attribute field is required.',
-                'ticket_id.exists' => 'The ticket does not exist.',
-                'user_id.exists' => 'The user does not exist.',
-                'user_id.unique' => 'The user is already assigned to the ticket.'
+                'user_id.exists' => 'The user is not assigned to the ticket.'
             ]
         );
 

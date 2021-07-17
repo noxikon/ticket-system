@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Tickets;
 
 class TicketController extends Controller
 {
-    public function create(Request $request){
-        
+    public function create(Request $request)
+    {
         $ticket = new Tickets;
-        $ticket->titel = $request->title;
+        $ticket->title = $request->title;
         $ticket->user_id = $request->user_id;
         $ticket->description = $request->description;
         $ticket->status_id = $request->status_id;
@@ -25,9 +26,10 @@ class TicketController extends Controller
         }
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $ticket = Tickets::find($request->id);
-        $ticket->titel = $request->title;
+        $ticket->title = $request->title;
         $ticket->user_id = $request->user_id;
         $ticket->description = $request->description;
         $ticket->status_id = $request->status_id;
@@ -41,7 +43,8 @@ class TicketController extends Controller
         }
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $ticket = Tickets::find($request->id);
         $ticket->delete();
 
@@ -52,7 +55,8 @@ class TicketController extends Controller
         }
     }
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
         $ticket = Tickets::find($request->id);
         $ticket->status_id = $request->status_id;
         $ticket->save();
@@ -64,7 +68,8 @@ class TicketController extends Controller
         }
     }
 
-    public function assignUser(Request $request){
+    public function assignUser(Request $request)
+    {
         $ticket = Tickets::find($request->id);
         $ticket->user_id = $request->user_id;
         $ticket->save();

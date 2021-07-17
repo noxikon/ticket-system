@@ -13,10 +13,10 @@ class Tickets extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('ticket', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
-            $table->string('titel');
+            $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('status_id');
             $table->date('due_date');
@@ -36,6 +36,6 @@ class Tickets extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('ticket');
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Tickets;
 
 class TestTicketSystem extends Controller
 {
+    
     public function createStatus(){
 
         $arr_status = [
@@ -24,7 +25,7 @@ class TestTicketSystem extends Controller
             $status->status_name = $status_name;
             $status->save();
         }
-
+/*
         $arr_tickets = [
             [
                 "titel" => "System-Service",
@@ -52,7 +53,8 @@ class TestTicketSystem extends Controller
                 $ticket->$index = $value;
             }
             $ticket->save();
-        }
+        }*/
 
     }
+    
 }

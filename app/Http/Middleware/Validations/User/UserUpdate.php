@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Validations\Ticket;
+namespace App\Http\Middleware\Validations\User;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
-class TicketAssignUser
+class UserUpdate
 {
     /**
      * Handle an incoming request.
@@ -22,18 +21,13 @@ class TicketAssignUser
         $validator = Validator::make(
             $request->all(),
             [
-                'ticket_id' => ['required', 'exists:ticket,id'],
-                'user_id' => [
-                    'required',
-                    'exists:users,id',
-                    Rule::unique('ticket_j_user', 'user_id')->where('ticket_id', $request->get('ticket_id'))
-                ]
+                'id' => ['required', 'exists:user,id'],
+                'name' => ['required'],
+                'email' => ['required', 'unique:user,email'],
+                'password' => ['required'],
             ],
             [
                 'required' => 'The :attribute field is required.',
-                'ticket_id.exists' => 'The ticket does not exist.',
-                'user_id.exists' => 'The user does not exist.',
-                'user_id.unique' => 'The user is already assigned to the ticket.'
             ]
         );
 

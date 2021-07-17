@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TicketJUsers extends Migration
+class TicketJUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class TicketJUsers extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_j_users', function (Blueprint $table) {
+        Schema::create('ticket_j_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('ticket_id');
@@ -23,7 +23,7 @@ class TicketJUsers extends Migration
             $table->index('user_id');
             $table->index('ticket_id');
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('ticket_id')->references('id')->on('ticket');
         });
     }

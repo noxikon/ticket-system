@@ -17,6 +17,9 @@ use App\Http\Middleware\Validations\Status\StatusCreation;
 use App\Http\Middleware\Validations\Status\StatusDelete;
 
 // User
+use App\Http\Middleware\Validations\User\UserCreation;
+use App\Http\Middleware\Validations\User\UserUpdate;
+use App\Http\Middleware\Validations\User\UserDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,9 +57,9 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::prefix('user')->group(function () {
-        //Route::get('/create', [App\Http\Controllers\TicketController::class, 'assignUser']);
-        //Route::get('/update', [App\Http\Controllers\TicketController::class, 'assignUser']);
-        //Route::get('/delete', [App\Http\Controllers\TicketController::class, 'assignUser']);
+        Route::get('/create', [App\Http\Controllers\UserController::class, 'create'])->middleware(UserCreation::class);
+        Route::get('/update', [App\Http\Controllers\UserController::class, 'update'])->middleware(UserUpdate::class);
+        Route::get('/delete', [App\Http\Controllers\UserController::class, 'delete'])->middleware(UserDelete::class);
     });
 
     Route::prefix('test')->group(function () {

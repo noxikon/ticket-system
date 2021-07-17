@@ -9,5 +9,5 @@ class TicketJUser extends Model
 {
     use HasFactory;
 
-    protected $table = 'ticket_j_users';
+    protected $table = 'ticket_j_user';
 }

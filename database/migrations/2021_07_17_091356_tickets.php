@@ -18,7 +18,7 @@ class Tickets extends Migration
             $table->integer('userid');
             $table->string('titel');
             $table->text('description');
-            $table->integer('status_id');
+            $table->unsignedBigInteger('status_id');
             $table->date('due_date');
             $table->timestamps();
 

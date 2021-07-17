@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 // model's
 use App\Models\Tickets;
 use App\Models\TicketJUser;
+use App\Models\TicketConnection;
 
 class TicketController extends Controller
 {
@@ -92,6 +93,34 @@ class TicketController extends Controller
             return "Error, the user is still assign to the ticket.";
         }else{
             return "The user is not longer assign to the ticket.";
+        }
+    }
+
+    public function addTicketRelation(Request $request)
+    {
+        $ticket_relation = new TicketConnection;
+        $ticket_relation->parentticket_id = $request->parentticket_id;
+        $ticket_relation->childticket_id = $request->childticket_id;
+        $ticket_relation->ticketrelation_id = $request->ticketrelation_id;
+        $ticket_relation->save();
+
+        if(!$ticket_relation){
+            return "Error, the ticket relation can't created.";
+        }else{
+            return "The ticket relation has been created!";
+        }
+    }
+
+    public function removeTicketRelation(Request $request)
+    {
+        $TicketConnection = TicketConnection::where('parentticket_id', $request->get('parentticket_id'))
+                                    ->where('childticket_id', $request->get('childticket_id'))
+                                    ->delete();
+
+        if(!$TicketConnection){
+            return "Error, the ticket relation can't get delete.";
+        }else{
+            return "The ticket relation has been deletet!";
         }
     }
 }

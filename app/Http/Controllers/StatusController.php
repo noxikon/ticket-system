@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// modal's
 use App\Models\Tickets;
 use App\Models\Status;
 
@@ -35,7 +33,7 @@ class StatusController extends Controller
         }
     }
 
-    public function getStatus(Request $request)
+    public function all(Request $request)
     {
         $status = Status::all();
 

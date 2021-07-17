@@ -14,6 +14,8 @@ use App\Http\Middleware\Validations\Status\StatusDelete;
 use App\Http\Middleware\Validations\User\UserCreation;
 use App\Http\Middleware\Validations\User\UserUpdate;
 use App\Http\Middleware\Validations\User\UserDelete;
+use App\Http\Middleware\Validations\Relation\RelationCreation;
+use App\Http\Middleware\Validations\Relation\RelationDelete;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('status')->group(function () {
         Route::get('/create', [App\Http\Controllers\StatusController::class, 'create'])->middleware(StatusCreation::class);
         Route::get('/delete', [App\Http\Controllers\StatusController::class, 'delete'])->middleware(StatusDelete::class);
-        Route::get('/getStatus', [App\Http\Controllers\StatusController::class, 'getStatus']);
+        Route::get('/all', [App\Http\Controllers\StatusController::class, 'all']);
     });
 
     Route::prefix('user')->group(function () {
@@ -59,6 +61,13 @@ Route::prefix('v1')->group(function () {
         Route::get('/update', [App\Http\Controllers\UserController::class, 'update'])->middleware(UserUpdate::class);
         Route::get('/delete', [App\Http\Controllers\UserController::class, 'delete'])->middleware(UserDelete::class);
     });
+
+    Route::prefix('relation')->group(function () {
+        Route::get('/create', [App\Http\Controllers\RelationController::class, 'create'])->middleware(RelationCreation::class);
+        Route::get('/delete', [App\Http\Controllers\RelationController::class, 'delete'])->middleware(RelationDelete::class);
+        Route::get('/all', [App\Http\Controllers\RelationController::class, 'all']);
+    });
+
 
     Route::prefix('test')->group(function () {
         Route::get('/start', [App\Http\Controllers\Base::class, 'createTestValues']);

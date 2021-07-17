@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Validations\Status;
+namespace App\Http\Middleware\Validations\Relation;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
-class StatusCreation
+class RelationDelete
 {
     /**
      * Handle an incoming request.
@@ -21,11 +21,11 @@ class StatusCreation
         $validator = Validator::make(
             $request->all(),
             [
-                'status_name' => ['required', 'exists:status,status_name']
+                'id' => ['required', 'exists:ticket_relation,id']
             ],
             [
                 'required' => 'The :attribute field is required.',
-                'status_name.exists' => 'The status does not exist.'
+                'id.exists' => 'The relation does not exist.'
             ]
         );
 

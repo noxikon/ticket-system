@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// model's
 use App\Models\Status;
 use App\Models\Tickets;
 

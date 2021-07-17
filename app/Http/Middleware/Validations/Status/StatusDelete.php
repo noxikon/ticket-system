@@ -21,7 +21,7 @@ class StatusDelete
         $validator = Validator::make(
             $request->all(),
             [
-                'id' => ['required', 'exists:status,id', 'unique:ticket,status_id'],
+                'id' => ['required', 'exists:status,id', 'unique:ticket,status_id']
             ],
             [
                 'id.unique' => 'A ticket has the status.',

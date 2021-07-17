@@ -13,7 +13,8 @@ use App\Http\Middleware\Validations\Ticket\TicketChangeStatus;
 use App\Http\Middleware\Validations\Ticket\TicketUnassignUser;
 
 // Status
-
+use App\Http\Middleware\Validations\Status\StatusCreation;
+use App\Http\Middleware\Validations\Status\StatusDelete;
 
 // User
 
@@ -47,8 +48,9 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::prefix('status')->group(function () {
-        //Route::get('/create', [App\Http\Controllers\TicketController::class, 'create']);
-        //Route::get('/delete', [App\Http\Controllers\TicketController::class, 'delete']);
+        Route::get('/create', [App\Http\Controllers\StatusController::class, 'create'])->middleware(StatusCreation::class);
+        Route::get('/delete', [App\Http\Controllers\StatusController::class, 'delete'])->middleware(StatusDelete::class);
+        Route::get('/getStatus', [App\Http\Controllers\StatusController::class, 'getStatus']);
     });
 
     Route::prefix('user')->group(function () {
@@ -57,7 +59,7 @@ Route::prefix('v1')->group(function () {
         //Route::get('/delete', [App\Http\Controllers\TicketController::class, 'assignUser']);
     });
 
-    Route::prefix('tests')->group(function () {
-        Route::get('/start', [App\Http\Controllers\TestTicketSystem::class, 'createTestValues']);
+    Route::prefix('test')->group(function () {
+        Route::get('/start', [App\Http\Controllers\Base::class, 'createTestValues']);
     });
 });

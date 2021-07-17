@@ -71,11 +71,6 @@ class TicketController extends Controller
     public function assignUser(Request $request)
     {
         /*
-        $validatedData = $request->validate([
-            'ticket_id' => ['required'],
-            'user_id' => ['required', 'exists:ticket_j_users'],
-        ]);
-
 
         $ticket = TicketJUser::find($request->id);
 

@@ -10,6 +10,11 @@ use App\Models\Tickets;
 
 class TestTicketSystem extends Controller
 {
+
+    public function test()
+    {
+        return "Hello";
+    }
     
     public function createTestValues()
     {

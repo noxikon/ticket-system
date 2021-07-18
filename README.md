@@ -38,7 +38,7 @@ The token can be change in the folder - /config/app.php.
 
 #### Create database values:
 ```
-http://127.0.0.1:8000/api/v1/test/start
+http://127.0.0.1:8000/api/v1/base-data/init
 ```
 
 ### Ticket
@@ -179,7 +179,7 @@ http://127.0.0.1:8000/api/v1/status/delete
 
 #### Get all status
 ```
-http://127.0.0.1:8000/api/v1/status/delete
+http://127.0.0.1:8000/api/v1/status/all
 ```
 
 ### User

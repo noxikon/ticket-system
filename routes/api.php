@@ -71,7 +71,7 @@ Route::middleware(EnsureTokenIsValid::class)->prefix('v1')->group(function () {
     });
 
 
-    Route::prefix('test')->group(function () {
-        Route::get('/start', [App\Http\Controllers\Base::class, 'createTestValues']);
+    Route::prefix('base-data')->group(function () {
+        Route::get('/init', [App\Http\Controllers\Base::class, 'createTestValues']);
     });
 });

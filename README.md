@@ -4,10 +4,10 @@
 Create a new project folder. <br>
 Now we need to go in the project folder.
 ```bash
-cd projeckFolder
+cd projectFolder
 ```
 
-Now we need to pull the projekt from Git.
+Now we need to pull the project from Git.
 
 
 Then we install the dependencies.

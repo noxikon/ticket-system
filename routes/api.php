@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Middleware\EnsureTokenIsValid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Validations\Ticket\TicketCreation;
@@ -32,7 +34,7 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('v1')->group(function () {
+Route::middleware(EnsureTokenIsValid::class)->prefix('v1')->group(function () {
     Route::prefix('ticket')->group(function () {
         Route::get('/create', [App\Http\Controllers\TicketController::class, 'create'])->middleware(TicketCreation::class);
         Route::get('/update', [App\Http\Controllers\TicketController::class, 'update'])->middleware(TicketUpdate::class);

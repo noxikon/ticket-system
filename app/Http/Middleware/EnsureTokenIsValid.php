@@ -17,7 +17,7 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->header('authorization') !== 'ticket d41d8cd98f00b204e9800998ecf8427e') {
+        if ($request->header('authorization') !== config('app.authentication')) {
             //return redirect('welcome');
             return new Response('The authentication toke is wrong or not set!');
         }

@@ -1,62 +1,257 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Read ME
+## Install Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Create a new project folder. <br>
+Now we need to go in the project folder.
+```bash
+cd projeckFolder
+```
 
-## About Laravel
+Now we need to pull the projekt from Git.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Then we install the dependencies.
+```bash
+composer install
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+After we install everything we need, we can start the Backend.
+```bash
+php artisan serve
+```
 
-## Learning Laravel
+## Api's 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Authentication
+If you want to send a request, you need to set up a token. <br>
+The token can be change in the folder - /config/app.php.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- OAuth 2.0
+- Available Tokens: 
+  - d41d8cd98f00b204e9800998ecf8427e
+- Header Prefix:
+  - ticket
 
-## Laravel Sponsors
+![Sample picture](./resources/images/readme/sample.png);
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Start
 
-### Premium Partners
+#### Create database values:
+```
+http://127.0.0.1:8000/api/v1/test/start
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+### Ticket
 
-## Contributing
+#### Create ticket
+```
+http://127.0.0.1:8000/api/v1/ticket/create
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Senden Json:
+```json
+{
+    "title": "Test",
+    "description": "asd",
+    "due_date": "",
+    "status_id": 1
+}
+```
 
-## Code of Conduct
+#### Update Ticket
+```
+http://127.0.0.1:8000/api/v1/ticket/update
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Senden Json:
+```json
+{
+    "id": 5,
+    "title": "Pdf-Tool",
+    "description": "Sample Text",
+    "due_date": "2020-09-30",
+    "status_id": 4
+}
+```
 
-## Security Vulnerabilities
+#### Delete ticket
+```
+http://127.0.0.1:8000/api/v1/ticket/delete
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Senden Json:
+```json
+{
+    "id": 5
+}
+```
 
-## License
+#### Change ticketstatus
+```
+http://127.0.0.1:8000/api/v1/ticket/changeStatus
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Senden Json:
+```json
+{
+    "ticket_id": 3,
+    "status_id": 3
+}
+```
+
+#### Assign user to ticket
+```
+http://127.0.0.1:8000/api/v1/ticket/assignUser
+```
+
+#### Senden Json:
+```json
+{
+    "ticket_id": 1,
+    "user_id": 1
+}
+```
+
+#### Unassign user from ticket
+```
+http://127.0.0.1:8000/api/v1/ticket/unassignUser
+```
+
+#### Senden Json:
+```json
+{
+    "ticket_id": 4,
+    "user_id": 1
+}
+```
+
+#### Add relation to tickets
+```
+http://127.0.0.1:8000/api/v1/ticket/addRelation
+```
+
+#### Senden Json:
+```json
+{
+    "parentticket_id": 4,
+    "childticket_id": 2,
+    "ticketrelation_id": 2
+}
+```
+
+#### Remove relation from tickets
+```
+http://127.0.0.1:8000/api/v1/ticket/removeRelation
+```
+
+#### Senden Json:
+```json
+{
+    "parentticket_id": 1,
+    "childticket_id": 3
+}
+```
+
+### Status
+#### Create new status
+```
+http://127.0.0.1:8000/api/v1/status/create
+```
+
+#### Senden Json:
+```json
+{
+    "status_name": "work in progress"
+}
+```
+
+#### Remove new status
+```
+http://127.0.0.1:8000/api/v1/status/delete
+```
+
+#### Senden Json:
+```json
+{
+    "id": 4
+}
+```
+
+#### Get all status
+```
+http://127.0.0.1:8000/api/v1/status/delete
+```
+
+### User
+#### Create a new user
+```
+http://127.0.0.1:8000/api/v1/user/create
+```
+
+#### Senden Json:
+```json
+{
+    "name": "alex",
+    "email": "test@web.de",
+    "password": "hallo"
+}
+```
+
+#### Update a user
+```
+http://127.0.0.1:8000/api/v1/user/update
+```
+
+#### Senden Json:
+```json
+{
+    "id": 1,
+    "name": "John",
+    "email": "someothertest@web.de",
+    "password": "hallo"
+}
+```
+
+#### Delete a new user
+```
+http://127.0.0.1:8000/api/v1/user/delete
+```
+
+#### Senden Json:
+```json
+{
+    "id": 5
+}
+```
+
+
+
+### Relation
+#### Creat a new relation
+```
+http://127.0.0.1:8000/api/v1/relation/create
+```
+
+#### Senden Json:
+```json
+{
+    "relation_name": "blocked"
+}
+```
+
+#### Delete a relation
+```
+http://127.0.0.1:8000/api/v1/relation/delete
+```
+
+#### Senden Json:
+```json
+{
+    "id": 4
+}
+```
+
+#### Get all relation's
+```
+http://127.0.0.1:8000/api/v1/relation/all
+```

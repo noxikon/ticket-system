@@ -12,11 +12,12 @@ class TicketController extends Controller
 {
     public function create(Request $request)
     {
-        $ticket = new Tickets;
-        $ticket->title = $request->title;
-        $ticket->description = $request->description;
-        $ticket->status_id = $request->status_id;
-        $ticket->due_date = $request->due_date;
+        $ticket = Tickets::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status_id' => $request->status_id,
+            'due_date' => $request->due_date
+        ]);
         $ticket->save();
 
         if(!$ticket){

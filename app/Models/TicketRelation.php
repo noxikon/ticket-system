@@ -17,10 +17,4 @@ class TicketRelation extends Model
         'id', 
         'relation_name'
     ];
-
-    public function __construct(string $name)
-    {
-        parent::__construct();
-        $this->relation_name = $name;
-    }
 }

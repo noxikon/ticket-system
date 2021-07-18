@@ -9,10 +9,11 @@ class UserController extends Controller
 {
     public function create(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = password_hash($request->password, PASSWORD_DEFAULT);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => password_hash($request->password, PASSWORD_DEFAULT)
+        ]); 
         $user->save();
 
         if(!$user){

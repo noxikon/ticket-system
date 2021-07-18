@@ -10,8 +10,9 @@ class StatusController extends Controller
 {
     public function create(Request $request)
     {
-        $status = new Status;
-        $status->status_name = $request->status_name;
+        $status = Status::create([
+            'status_name' => $request->status_name
+        ]);
         $status->save();
 
         if(!$status){

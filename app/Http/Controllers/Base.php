@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Status;
 use App\Models\Tickets;
+use App\Models\TicketRelation;
 
 class Base extends Controller
 {
@@ -17,6 +18,7 @@ class Base extends Controller
     {
         $this->createStatus();
         $this->createTickets();
+        $this->createRelations();
     }
 
 
@@ -30,8 +32,9 @@ class Base extends Controller
         ];
 
         foreach($arr_status as $status_name){
-            $status = new Status;
-            $status->status_name = $status_name;
+            $status = Status::create([
+                'status_name' => $status_name
+            ]);
             $status->save();
         }
     }
@@ -64,6 +67,22 @@ class Base extends Controller
                 $ticket->$index = $value;
             }
             $ticket->save();
+        }
+    }
+
+    private function createRelations()
+    {
+        $arr_relation = [
+            1 => 'blocking',
+            2 => 'relates to',
+            3 => 'is duplicate of'
+        ];
+
+        foreach($arr_relation as $relationName){
+            $relation = TicketRelation::create([
+                'relation_name' => $relationName
+            ]);
+            $relation->save();
         }
     }
 }

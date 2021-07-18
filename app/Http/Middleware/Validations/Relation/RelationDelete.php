@@ -21,7 +21,7 @@ class RelationDelete
         $validator = Validator::make(
             $request->all(),
             [
-                'id' => ['required', 'exists:ticket_relation,id']
+                'id' => ['required', 'exists:ticket_relation,id', 'exists:ticket_connection,ticketrelation_id']
             ],
             [
                 'required' => 'The :attribute field is required.',

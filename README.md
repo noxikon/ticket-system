@@ -38,7 +38,7 @@ The token can be change in the folder - /config/app.php.
 
 #### Create database values:
 ```
-http://127.0.0.1:8000/api/v1/base-data/init
+http://127.0.0.1:8000/api/v1/test/start
 ```
 
 ### Ticket
@@ -48,7 +48,7 @@ http://127.0.0.1:8000/api/v1/base-data/init
 http://127.0.0.1:8000/api/v1/ticket/create
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "title": "Test",
@@ -63,7 +63,7 @@ http://127.0.0.1:8000/api/v1/ticket/create
 http://127.0.0.1:8000/api/v1/ticket/update
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "id": 5,
@@ -79,7 +79,7 @@ http://127.0.0.1:8000/api/v1/ticket/update
 http://127.0.0.1:8000/api/v1/ticket/delete
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "id": 5
@@ -91,7 +91,7 @@ http://127.0.0.1:8000/api/v1/ticket/delete
 http://127.0.0.1:8000/api/v1/ticket/changeStatus
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "ticket_id": 3,
@@ -104,7 +104,7 @@ http://127.0.0.1:8000/api/v1/ticket/changeStatus
 http://127.0.0.1:8000/api/v1/ticket/assignUser
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "ticket_id": 1,
@@ -117,7 +117,7 @@ http://127.0.0.1:8000/api/v1/ticket/assignUser
 http://127.0.0.1:8000/api/v1/ticket/unassignUser
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "ticket_id": 4,
@@ -130,7 +130,7 @@ http://127.0.0.1:8000/api/v1/ticket/unassignUser
 http://127.0.0.1:8000/api/v1/ticket/addRelation
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "parentticket_id": 4,
@@ -144,7 +144,7 @@ http://127.0.0.1:8000/api/v1/ticket/addRelation
 http://127.0.0.1:8000/api/v1/ticket/removeRelation
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "parentticket_id": 1,
@@ -158,7 +158,7 @@ http://127.0.0.1:8000/api/v1/ticket/removeRelation
 http://127.0.0.1:8000/api/v1/status/create
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "status_name": "work in progress"
@@ -170,7 +170,7 @@ http://127.0.0.1:8000/api/v1/status/create
 http://127.0.0.1:8000/api/v1/status/delete
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "id": 4
@@ -188,7 +188,7 @@ http://127.0.0.1:8000/api/v1/status/all
 http://127.0.0.1:8000/api/v1/user/create
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "name": "alex",
@@ -202,7 +202,7 @@ http://127.0.0.1:8000/api/v1/user/create
 http://127.0.0.1:8000/api/v1/user/update
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "id": 1,
@@ -212,18 +212,17 @@ http://127.0.0.1:8000/api/v1/user/update
 }
 ```
 
-#### Delete a new user
+#### Delete a user
 ```
 http://127.0.0.1:8000/api/v1/user/delete
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "id": 5
 }
 ```
-
 
 
 ### Relation
@@ -232,7 +231,7 @@ http://127.0.0.1:8000/api/v1/user/delete
 http://127.0.0.1:8000/api/v1/relation/create
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "relation_name": "blocked"
@@ -244,7 +243,7 @@ http://127.0.0.1:8000/api/v1/relation/create
 http://127.0.0.1:8000/api/v1/relation/delete
 ```
 
-#### Senden Json:
+#### Example Json:
 ```json
 {
     "id": 4

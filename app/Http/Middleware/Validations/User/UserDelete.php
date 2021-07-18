@@ -21,7 +21,7 @@ class UserDelete
         $validator = Validator::make(
             $request->all(),
             [
-                'id' => ['required', 'exists:user,id'],
+                'id' => ['required', 'exists:user,id', 'exists:ticket_j_user,user_id'],
             ],
             [
                 'id.exists' => 'The user does not exist.'

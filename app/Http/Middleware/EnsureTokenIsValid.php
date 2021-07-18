@@ -18,7 +18,6 @@ class EnsureTokenIsValid
     public function handle(Request $request, Closure $next)
     {
         if ($request->header('authorization') !== config('app.authentication')) {
-            //return redirect('welcome');
             return new Response('The authentication toke is wrong or not set!');
         }
 

@@ -12,4 +12,9 @@ class Status extends Model
     public $timestamps = false;
 
     protected $table = 'status';
+
+    protected $fillable = [
+        'id', 
+        'status_name'
+    ];
 }

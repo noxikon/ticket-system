@@ -10,4 +10,14 @@ class Tickets extends Model
     use HasFactory;
     
     protected $table = 'ticket';
+
+    protected $fillable = [
+        'id', 
+        'title', 
+        'description', 
+        'status_id ', 
+        'due_date', 
+        'created_at', 
+        'updated_at'
+    ];
 }

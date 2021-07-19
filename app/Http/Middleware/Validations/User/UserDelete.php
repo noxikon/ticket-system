@@ -21,10 +21,12 @@ class UserDelete
         $validator = Validator::make(
             $request->all(),
             [
-                'id' => ['required', 'exists:user,id', 'exists:ticket_j_user,user_id'],
+                'id' => ['required', 'exists:user,id', 'unique:ticket_j_user,user_id'],
             ],
             [
-                'id.exists' => 'The user does not exist.'
+                'required' => 'The :attribute field is required.',
+                'id.exists' => 'The user does not exist.',
+                'id.unique' => 'The user is assign to a ticket.',
             ]
         );
 
